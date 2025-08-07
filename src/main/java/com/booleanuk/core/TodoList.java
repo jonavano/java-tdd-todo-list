@@ -34,23 +34,22 @@ public class TodoList {
     }
 
     public HashMap<String, Boolean> getCompletedTasks(){
-        HashMap<String, Boolean> returnTasks = new HashMap<>();
-        for (String taskName : todoList.keySet()) {
-            if (todoList.get(taskName)) {
-                returnTasks.put(taskName, true);
-            }
-        }
-        return returnTasks;
+        return getTasks(true);
     }
 
     public HashMap<String, Boolean> getIncompletedTasks() {
+        return getTasks(false);
+    }
+
+    public HashMap<String, Boolean> getTasks(boolean taskStatus) {
         HashMap<String, Boolean> returnTasks = new HashMap<>();
         for (String taskName : todoList.keySet()) {
-            if (todoList.get(taskName) == false) {
+            if (todoList.get(taskName) == taskStatus) {
                 returnTasks.put(taskName, false);
             }
         }
         return returnTasks;
+
     }
 
     public String findTask(String taskName) {
